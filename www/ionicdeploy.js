@@ -79,7 +79,19 @@ var IonicDeploy = {
       'getMetadata',
       [app_id, uuid]
     );
-  }
+  },
+  parseUpdate: function(app_id, jsonResponse, success, failure) {
+    if (typeof jsonReponse !== 'string') {
+      jsonResponse = JSON.stringify(jsonResponse);
+    }
+    cordova.exec(
+      success,
+      failure,
+      'IonicDeploy',
+      'parseUpdate',
+      [app_id, jsonResponse]
+    );
+  },
 }
 
 module.exports = IonicDeploy;
